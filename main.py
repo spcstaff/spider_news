@@ -90,7 +90,7 @@ def parse_results():
         date = article.publish_date
         keywords = ' '.join(phrase for phrase in article.keywords)
 
-        cleared = "%s, %s, %s, %s, %s" % (title, link, date, author, keywords)
+        cleared = "%s, %s, %s, %s, %s, \n" % (title, link, date, author, keywords)
         returned_data += cleared
     pprint.pprint(returned_data)
     return returned_data
