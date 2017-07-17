@@ -17,18 +17,19 @@ def get_link():
     res = service.cse().list(
         q='casino river hotel',
         cx='014452005112961186943:btsgmzwssuw',
-        dateRestrict='w[3]',
+        dateRestrict='w[1]',
         fields='items(title, link, labels(displayName))'
     ).execute()
 
-    #json_file = unquote(res)
-    #res_dict = json.loads(res)
+    # json_file = unquote(res)
+    # res_dict = json.loads(res)
 
-    #print(res['items'][0]['link'])
+    print(res)
 
     return res['items']
 
 get_link()
+
 
 def get_text(link):
 
@@ -90,7 +91,7 @@ def parse_results():
         date = article.publish_date
         keywords = ' '.join(phrase for phrase in article.keywords)
 
-        cleared = "%s, %s, %s, %s, %s, \n" % (title, link, date, author, keywords)
+        cleared = "%s,%s,%s,%s,%s,\n" % (title, link, date, author, keywords)
         returned_data += cleared
     pprint.pprint(returned_data)
     return returned_data
@@ -104,4 +105,4 @@ def save_data():
     output.write(parse_results())
     output.close()
 
-save_data()
+# save_data()
